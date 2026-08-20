@@ -1,0 +1,322 @@
+{
+  "note": "The subject taxonomy, read by both the collector and the site so they can never disagree. `examples` are shown to a visitor so a family is not a guessing game; `match` is what the collector looks for in a page and what a typed subject is matched against. Two levels deep was considered and rejected: scholarships are scoped to faculties rather than to majors, so a list of two hundred majors would be two hundred mostly empty filters. A trailing * marks a stem that should match as a prefix (agricultur* covers agriculture and agricultural); every other term is matched as a whole word, because \"art\" inside \"artificial\" filed an AI scholarship under Arts.",
+  "families": [
+    {
+      "key": "computing",
+      "label": "Computing",
+      "examples": [
+        "computer science",
+        "artificial intelligence",
+        "data science",
+        "cyber security",
+        "software engineering"
+      ],
+      "match": [
+        "computer science",
+        "computing",
+        "artificial intelligence",
+        "machine learning",
+        "data science",
+        "software engineering",
+        "cyber security",
+        "cybersecurity",
+        "informatics",
+        "information technology",
+        "information systems",
+        "computer engineering",
+        "game development",
+        "human-computer interaction",
+        "web development",
+        "cloud computing",
+        "computer vision",
+        "robotics"
+      ]
+    },
+    {
+      "key": "engineering",
+      "label": "Engineering",
+      "examples": [
+        "mechanical",
+        "electrical",
+        "civil",
+        "chemical",
+        "aerospace"
+      ],
+      "match": [
+        "engineering*",
+        "mechanical engineer",
+        "electrical engineer",
+        "civil engineer",
+        "chemical engineer",
+        "aerospace",
+        "aeronautical",
+        "biomedical engineer",
+        "materials science",
+        "industrial engineer",
+        "petroleum engineer",
+        "mechatronics",
+        "manufacturing engineer",
+        "structural engineer"
+      ]
+    },
+    {
+      "key": "business",
+      "label": "Business",
+      "examples": [
+        "management",
+        "finance",
+        "accounting",
+        "economics",
+        "marketing"
+      ],
+      "match": [
+        "business",
+        "management",
+        "finance",
+        "accounting",
+        "economics",
+        "marketing",
+        "commerce",
+        "mba",
+        "supply chain",
+        "logistics",
+        "entrepreneurship",
+        "human resources",
+        "international business",
+        "actuarial",
+        "banking",
+        "hospitality management",
+        "tourism"
+      ]
+    },
+    {
+      "key": "medicine",
+      "label": "Medicine and health",
+      "examples": [
+        "medicine",
+        "nursing",
+        "pharmacy",
+        "dentistry",
+        "public health"
+      ],
+      "match": [
+        "medicine",
+        "medical",
+        "nursing",
+        "dentistry",
+        "dental",
+        "pharmacy",
+        "pharmaceutical",
+        "public health",
+        "veterinary",
+        "midwifery",
+        "physiotherapy",
+        "biomedical science",
+        "nutrition",
+        "dietetics",
+        "radiography",
+        "occupational therapy",
+        "paramedic",
+        "optometry"
+      ]
+    },
+    {
+      "key": "sciences",
+      "label": "Sciences",
+      "examples": [
+        "physics",
+        "chemistry",
+        "biology",
+        "mathematics",
+        "biotechnology"
+      ],
+      "match": [
+        "physics",
+        "chemistry",
+        "biology",
+        "mathematics",
+        "maths",
+        "statistics",
+        "biotechnology",
+        "astronomy",
+        "geology",
+        "neuroscience",
+        "genetics",
+        "biochemistry",
+        "microbiology",
+        "molecular biology",
+        "earth science",
+        "marine biology"
+      ]
+    },
+    {
+      "key": "law",
+      "label": "Law",
+      "examples": [
+        "law",
+        "international law",
+        "human rights",
+        "criminology"
+      ],
+      "match": [
+        "law",
+        "legal studies",
+        "llm",
+        "llb",
+        "jurisprudence",
+        "criminology",
+        "human rights",
+        "international law",
+        "commercial law"
+      ]
+    },
+    {
+      "key": "arts",
+      "label": "Arts and design",
+      "examples": [
+        "architecture",
+        "graphic design",
+        "music",
+        "film",
+        "fashion"
+      ],
+      "match": [
+        "art",
+        "fine art",
+        "design",
+        "graphic design",
+        "industrial design",
+        "architecture",
+        "music",
+        "film",
+        "fashion",
+        "media",
+        "theatre",
+        "drama",
+        "photography",
+        "animation",
+        "illustration",
+        "performing arts",
+        "creative writing",
+        "interior design"
+      ]
+    },
+    {
+      "key": "humanities",
+      "label": "Humanities",
+      "examples": [
+        "history",
+        "philosophy",
+        "literature",
+        "languages",
+        "linguistics"
+      ],
+      "match": [
+        "humanities",
+        "history",
+        "philosophy",
+        "literature",
+        "english literature",
+        "languages",
+        "linguistics",
+        "theology",
+        "religious studies",
+        "classics",
+        "translation",
+        "journalism",
+        "archaeology",
+        "cultural studies"
+      ]
+    },
+    {
+      "key": "social-sciences",
+      "label": "Social sciences",
+      "examples": [
+        "psychology",
+        "politics",
+        "international relations",
+        "sociology",
+        "social work"
+      ],
+      "match": [
+        "social science",
+        "sociology",
+        "psychology",
+        "politics",
+        "political science",
+        "international relations",
+        "anthropology",
+        "development studies",
+        "social work",
+        "geography",
+        "public policy",
+        "public administration",
+        "criminal justice"
+      ]
+    },
+    {
+      "key": "education",
+      "label": "Education",
+      "examples": [
+        "teaching",
+        "teacher training",
+        "early childhood",
+        "special education"
+      ],
+      "match": [
+        "education",
+        "teaching",
+        "teacher training",
+        "pedagog*",
+        "early childhood",
+        "special education",
+        "educational leadership",
+        "curriculum"
+      ]
+    },
+    {
+      "key": "agriculture",
+      "label": "Agriculture",
+      "examples": [
+        "agronomy",
+        "food science",
+        "forestry",
+        "animal science"
+      ],
+      "match": [
+        "agricultur*",
+        "agronomy",
+        "forestry",
+        "food science",
+        "food technology",
+        "horticultur*",
+        "fisheries",
+        "aquaculture",
+        "animal science",
+        "soil science"
+      ]
+    },
+    {
+      "key": "environment",
+      "label": "Environment",
+      "examples": [
+        "environmental science",
+        "sustainability",
+        "climate",
+        "renewable energy"
+      ],
+      "match": [
+        "environment*",
+        "environmental science",
+        "sustainab*",
+        "climate",
+        "renewable energy",
+        "ecolog*",
+        "conservation",
+        "biodiversity",
+        "energy systems",
+        "water resources"
+      ]
+    }
+  ]
+}

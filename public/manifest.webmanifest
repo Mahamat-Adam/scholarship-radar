@@ -1,0 +1,25 @@
+{
+  "name": "Scholarship Radar",
+  "short_name": "Scholarships",
+  "description": "Bachelor's and master's scholarships for international students, linked only to the awarding institution's own site.",
+  "start_url": "/scholarship-radar/",
+  "scope": "/scholarship-radar/",
+  "display": "standalone",
+  "background_color": "#FAF8F4",
+  "theme_color": "#FAF8F4",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

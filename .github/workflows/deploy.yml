@@ -1,0 +1,103 @@
+name: Collect and publish
+
+on:
+  # Late evening UTC, and deliberately not on the hour: GitHub delays scheduled
+  # runs under load, and the top of every hour is when that load arrives.
+  schedule:
+    - cron: '23 22 * * *'
+  push:
+    branches: [main]
+  # Also how to bring the schedule back. GitHub disables cron on a public
+  # repository after 60 days with no activity, and a run of quiet weeks is
+  # enough to do it.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One publish at a time, and let a newer run wait rather than fight.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    # The crawl is paced on purpose — one request at a time per host, with a
+    # delay — so it takes a while and that is the intended behaviour.
+    timeout-minutes: 240
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      # The index is never committed. The currently published copy is pulled
+      # back in before crawling, which gives the run its memory — when each
+      # award was first seen, and everything found on the days this run is not
+      # revisiting — without a single data commit entering git. The repository
+      # therefore stays the same size forever.
+      #
+      # On the first run there is nothing to fetch and the collector starts empty.
+      - name: Carry forward the published index
+        run: |
+          set -euo pipefail
+          BASE="https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/data"
+          mkdir -p public/data/c
+          if curl -fsSL --max-time 60 "$BASE/summary.json" -o public/data/summary.json; then
+            echo "Previous index: $(node -p 'require("./public/data/summary.json").total') open listings"
+            curl -fsSL --max-time 60 "$BASE/sources.json" -o public/data/sources.json || true
+            node -e '
+              const s = require("./public/data/summary.json");
+              const files = [...Object.values(s.shards || {}), s.closedShard].filter(Boolean);
+              console.log(files.join("\n"));
+            ' | while read -r f; do
+              [ -n "$f" ] || continue
+              curl -fsSL --max-time 60 "$BASE/$f" -o "public/data/$f" || true
+            done
+          else
+            echo "No published index yet, starting fresh."
+            rm -f public/data/summary.json
+          fi
+
+      - name: Collect
+        run: npm run collect
+
+      # The site's whole claim is that every link is on the awarding
+      # institution's own domain and that nothing shown is closed. This checks
+      # that against what was actually written, and fails the run rather than
+      # publishing an index that breaks its own promises — a wrong link is
+      # worse than a stale one, because the previous index stays live.
+      - name: Verify the index
+        run: npm run verify
+
+      - name: Build
+        run: npm run build
+
+      # Pages has to be switched on once for the repository, with its source set
+      # to GitHub Actions. The workflow token is not allowed to create the site
+      # itself, so `enablement: true` is not used here — turn it on under
+      # Settings > Pages, or with:
+      #   gh api -X POST repos/OWNER/REPO/pages -f build_type=workflow
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

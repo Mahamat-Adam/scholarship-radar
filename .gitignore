@@ -1,0 +1,13 @@
+node_modules
+dist
+.DS_Store
+*.local
+pipeline/.cache
+
+# The published index is never committed. Each run pulls the live copy back
+# from the site, updates it and republishes, so the repository stays the same
+# size however long the crawler runs.
+#
+# The trailing /** matters: `public/data/*.json` matches summary.json but not
+# public/data/c/GB-82bbd084.json, and the per-country shards are the bulk of it.
+public/data/**

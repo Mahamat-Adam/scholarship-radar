@@ -1,0 +1,19 @@
+{
+  "note": "Grade equivalences, shared by the collector and the site so a bar read off a page and a grade typed by a visitor end up on the same scale. Everything is normalised to the UK percentage, because that is the scale the classifications are actually defined against. A linear (gpa / 4) x 100 was the obvious conversion and is wrong: it makes GPA 3.0 into 75%, when the published equivalence puts it level with a 2:1 at 60% — which would have made every American award look stricter than an identical British one and hidden it from people who qualify.",
+  "caveat": "These are approximate. No official universal conversion exists, universities publish their own tables, and a borderline case is decided by an admissions office rather than by arithmetic. Used only to hide awards clearly out of reach, never to rank anybody.",
+  "gpaToPercent": [
+    [2.0, 45],
+    [2.3, 50],
+    [2.7, 55],
+    [3.0, 60],
+    [3.3, 65],
+    [3.7, 70],
+    [4.0, 75]
+  ],
+  "classifications": [
+    { "key": "first", "label": "First class", "note": "70% and above", "percent": 70 },
+    { "key": "upper-second", "label": "2:1 (upper second)", "note": "60–69%", "percent": 60 },
+    { "key": "lower-second", "label": "2:2 (lower second)", "note": "50–59%", "percent": 50 },
+    { "key": "third", "label": "Third class", "note": "40–49%", "percent": 45 }
+  ]
+}
