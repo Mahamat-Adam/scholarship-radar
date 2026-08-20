@@ -38,8 +38,10 @@ const COUNTRIES = [
   'ES', 'SE', 'IS', 'LI', 'NO', 'CH',
   // East and South-East Asia
   'CN', 'JP', 'KR', 'SG', 'HK', 'TW',
-  // Gulf
-  'AE', 'SA',
+  // Gulf. Worth their own line: several of these are full rides with a
+  // stipend that ask far less of an applicant than their Western equivalents,
+  // which is exactly the kind of award this site exists to surface.
+  'AE', 'SA', 'QA', 'KW', 'BH', 'OM',
   // Bridge
   'TR',
 ]

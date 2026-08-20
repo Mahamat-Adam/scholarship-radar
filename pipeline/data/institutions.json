@@ -2317,6 +2317,126 @@
    "source": "list"
   },
   {
+   "id": "ahliauniversity-org",
+   "name": "Al Ahlia University",
+   "cc": "BH",
+   "domain": "ahliauniversity.org",
+   "domains": [
+    "ahliauniversity.org"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "amaiu-edu-bh",
+   "name": "Ama International University",
+   "cc": "BH",
+   "domain": "amaiu.edu.bh",
+   "domains": [
+    "amaiu.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "asb-bh",
+   "name": "American School of Bahrain",
+   "cc": "BH",
+   "domain": "asb.bh",
+   "domains": [
+    "asb.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "asu-edu-bh",
+   "name": "Applied Science University",
+   "cc": "BH",
+   "domain": "asu.edu.bh",
+   "domains": [
+    "asu.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "aou-org-bh",
+   "name": "Arab Open University",
+   "cc": "BH",
+   "domain": "aou.org.bh",
+   "domains": [
+    "aou.org.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "agu-edu-bh",
+   "name": "Arabian Gulf University",
+   "cc": "BH",
+   "domain": "agu.edu.bh",
+   "domains": [
+    "agu.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "gulfuniversity-net",
+   "name": "Gulf University College",
+   "cc": "BH",
+   "domain": "gulfuniversity.net",
+   "domains": [
+    "gulfuniversity.net"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "nyit-edu-bh",
+   "name": "New York Instiute of Technology",
+   "cc": "BH",
+   "domain": "nyit.edu.bh",
+   "domains": [
+    "nyit.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "rcsi-mub-com",
+   "name": "RCSI-Medical University of Bahrain",
+   "cc": "BH",
+   "domain": "rcsi-mub.com",
+   "domains": [
+    "rcsi-mub.com"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "ku-edu-bh",
+   "name": "The Kingdom University",
+   "cc": "BH",
+   "domain": "ku.edu.bh",
+   "domains": [
+    "ku.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "ucb-edu-bh",
+   "name": "University College Bahrain",
+   "cc": "BH",
+   "domain": "ucb.edu.bh",
+   "domains": [
+    "ucb.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "uob-edu-bh",
+   "name": "University of Bahrain",
+   "cc": "BH",
+   "domain": "uob.edu.bh",
+   "domains": [
+    "uob.edu.bh"
+   ],
+   "source": "list"
+  },
+  {
    "id": "acadiau-ca",
    "name": "Acadia University",
    "cc": "CA",
@@ -29562,6 +29682,86 @@
    "source": "list"
   },
   {
+   "id": "auk-edu-kw",
+   "name": "American University of Kuwait",
+   "cc": "KW",
+   "domain": "auk.edu.kw",
+   "domains": [
+    "auk.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "aum-edu-kw",
+   "name": "American University of Middle East",
+   "cc": "KW",
+   "domain": "aum.edu.kw",
+   "domains": [
+    "aum.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "aou-edu-kw",
+   "name": "Arab Open University, Kuwait Branch",
+   "cc": "KW",
+   "domain": "aou.edu.kw",
+   "domains": [
+    "aou.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "ackonline-com",
+   "name": "Australlian College of Kuwait",
+   "cc": "KW",
+   "domain": "ackonline.com",
+   "domains": [
+    "ackonline.com"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "gust-edu-kw",
+   "name": "Gulf University for Science and Technology",
+   "cc": "KW",
+   "domain": "gust.edu.kw",
+   "domains": [
+    "gust.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "kilaw-edu-kw",
+   "name": "Kuwait International Law School",
+   "cc": "KW",
+   "domain": "kilaw.edu.kw",
+   "domains": [
+    "kilaw.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "kmbs-edu-kw",
+   "name": "Kuwait Maastricht Business School",
+   "cc": "KW",
+   "domain": "kmbs.edu.kw",
+   "domains": [
+    "kmbs.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "kuniv-edu-kw",
+   "name": "Kuwait University",
+   "cc": "KW",
+   "domain": "kuniv.edu.kw",
+   "domains": [
+    "kuniv.edu.kw"
+   ],
+   "source": "list"
+  },
+  {
    "id": "iap-li",
    "name": "Internationle Akademie für Philosophie",
    "cc": "LI",
@@ -30899,6 +31099,116 @@
    "domain": "vuw.ac.nz",
    "domains": [
     "vuw.ac.nz"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "buc-edu-om",
+   "name": "Al-Buraimi University College",
+   "cc": "OM",
+   "domain": "buc.edu.om",
+   "domains": [
+    "buc.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "aou-edu-om",
+   "name": "Arab Open University",
+   "cc": "OM",
+   "domain": "aou.edu.om",
+   "domains": [
+    "aou.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "du-edu-om",
+   "name": "Dhofar University",
+   "cc": "OM",
+   "domain": "du.edu.om",
+   "domains": [
+    "du.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "ict-edu-om",
+   "name": "Ibra College of Technology",
+   "cc": "OM",
+   "domain": "ict.edu.om",
+   "domains": [
+    "ict.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "majancollege-edu-om",
+   "name": "Majan University College",
+   "cc": "OM",
+   "domain": "majancollege.edu.om",
+   "domains": [
+    "majancollege.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "muscatcollege-edu-om",
+   "name": "Muscat College",
+   "cc": "OM",
+   "domain": "muscatcollege.edu.om",
+   "domains": [
+    "muscatcollege.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "omancollege-edu-om",
+   "name": "Oman College Of Management & Technology",
+   "cc": "OM",
+   "domain": "omancollege.edu.om",
+   "domains": [
+    "omancollege.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "soharuni-edu-om",
+   "name": "Sohar University",
+   "cc": "OM",
+   "domain": "soharuni.edu.om",
+   "domains": [
+    "soharuni.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "squ-edu-om",
+   "name": "Sultan Qaboos University",
+   "cc": "OM",
+   "domain": "squ.edu.om",
+   "domains": [
+    "squ.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "suc-edu-om",
+   "name": "Sur University College",
+   "cc": "OM",
+   "domain": "suc.edu.om",
+   "domains": [
+    "suc.edu.om"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "unizwa-edu-om",
+   "name": "University of Nizwa",
+   "cc": "OM",
+   "domain": "unizwa.edu.om",
+   "domains": [
+    "unizwa.edu.om"
    ],
    "source": "list"
   },
@@ -32938,6 +33248,106 @@
     "utl.pt"
    ],
    "source": "list"
+  },
+  {
+   "id": "qatar-cmu-edu",
+   "name": "Carnegie Mellon University Qatar",
+   "cc": "QA",
+   "domain": "qatar.cmu.edu",
+   "domains": [
+    "qatar.cmu.edu"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "dohainstitute-edu-qa",
+   "name": "Doha Institute for Graduate Studies",
+   "cc": "QA",
+   "domain": "dohainstitute.edu.qa",
+   "domains": [
+    "dohainstitute.edu.qa"
+   ],
+   "source": "curated"
+  },
+  {
+   "id": "qatar-georgetown-edu",
+   "name": "Georgetown University in Qatar",
+   "cc": "QA",
+   "domain": "qatar.georgetown.edu",
+   "domains": [
+    "qatar.georgetown.edu"
+   ],
+   "source": "curated"
+  },
+  {
+   "id": "hbku-edu-qa",
+   "name": "Hamad Bin Khalifa University",
+   "cc": "QA",
+   "domain": "hbku.edu.qa",
+   "domains": [
+    "hbku.edu.qa"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "qatar-hec-edu",
+   "name": "HEC Paris in Qatar",
+   "cc": "QA",
+   "domain": "qatar.hec.edu",
+   "domains": [
+    "qatar.hec.edu"
+   ],
+   "source": "curated"
+  },
+  {
+   "id": "qatar-northwestern-edu",
+   "name": "Northwestern University In Qatar",
+   "cc": "QA",
+   "domain": "qatar.northwestern.edu",
+   "domains": [
+    "qatar.northwestern.edu"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "oryxschool-qa",
+   "name": "Oryx International",
+   "cc": "QA",
+   "domain": "oryxschool.qa",
+   "domains": [
+    "oryxschool.qa"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "qatar-tamu-edu",
+   "name": "Texas A&M University at Qatar",
+   "cc": "QA",
+   "domain": "qatar.tamu.edu",
+   "domains": [
+    "qatar.tamu.edu"
+   ],
+   "source": "curated"
+  },
+  {
+   "id": "qu-edu-qa",
+   "name": "University of Qatar",
+   "cc": "QA",
+   "domain": "qu.edu.qa",
+   "domains": [
+    "qu.edu.qa"
+   ],
+   "source": "list"
+  },
+  {
+   "id": "qatar-weill-cornell-edu",
+   "name": "Weill Cornell Medicine — Qatar",
+   "cc": "QA",
+   "domain": "qatar-weill.cornell.edu",
+   "domains": [
+    "qatar-weill.cornell.edu"
+   ],
+   "source": "curated"
   },
   {
    "id": "uab-ro",

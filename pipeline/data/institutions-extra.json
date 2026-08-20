@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Texas A&M University at Qatar",
+    "cc": "QA",
+    "domains": ["qatar.tamu.edu"],
+    "why": "Education City campus. Absent from the public domain list because it is filed under its American parent, but it admits and funds its own students in Doha."
+  },
+  {
+    "name": "Georgetown University in Qatar",
+    "cc": "QA",
+    "domains": ["qatar.georgetown.edu"],
+    "why": "Education City campus, same reason."
+  },
+  {
+    "name": "Weill Cornell Medicine — Qatar",
+    "cc": "QA",
+    "domains": ["qatar-weill.cornell.edu"],
+    "why": "Education City campus, same reason."
+  },
+  {
+    "name": "Doha Institute for Graduate Studies",
+    "cc": "QA",
+    "domains": ["dohainstitute.edu.qa"],
+    "why": "Master's only, and funds most of its intake. Simply missing from the public list."
+  },
+  {
+    "name": "HEC Paris in Qatar",
+    "cc": "QA",
+    "domains": ["qatar.hec.edu"],
+    "why": "Education City campus."
+  }
+]

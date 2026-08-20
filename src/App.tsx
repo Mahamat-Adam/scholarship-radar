@@ -210,16 +210,22 @@ export default function App() {
         {view === 'safety' && <Safety />}
       </main>
 
-      <footer className="mx-auto max-w-5xl px-4 pb-10 pt-4 text-center text-xs text-faint">
-        {summary && (
-          <p>
-            {t.common.builtOn(
-              formatDate(summary.built.slice(0, 10)),
-              summary.checked.toLocaleString('en-GB')
-            )}
-          </p>
-        )}
-        <p className="mt-1">{t.common.footerPrivacy}</p>
+      <footer className="mx-auto max-w-5xl px-4 pb-10 pt-6">
+        <p className="text-center text-sm text-muted">{t.common.thanks}</p>
+        <div className="mt-3 border-t border-line pt-4 text-center text-xs text-faint">
+          {summary && (
+            <p>
+              {t.common.builtOn(
+                formatDate(summary.built.slice(0, 10)),
+                summary.checked.toLocaleString('en-GB')
+              )}
+            </p>
+          )}
+          <p className="mt-1">{t.common.footerPrivacy}</p>
+          {/* Read at render rather than baked in, so the year is right without
+              anybody having to remember to change it. */}
+          <p className="mt-2">{t.common.rights(new Date().getFullYear())}</p>
+        </div>
       </footer>
     </div>
   )

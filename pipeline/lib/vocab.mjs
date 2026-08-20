@@ -301,12 +301,28 @@ export function detectLang(text) {
   return bestScore >= 4 && bestScore > englishWeight * 2 ? best : 'en'
 }
 
+/**
+ * decodeURIComponent, without the exception.
+ *
+ * A single malformed percent-escape anywhere in a university's markup — a stray
+ * "%" in a link, which is common enough — throws "URI malformed" and, before
+ * this, took the whole institution down with it. The undecoded string is a
+ * perfectly good thing to match against; losing the institution is not.
+ */
+export function safeDecode(value) {
+  try {
+    return decodeURIComponent(value)
+  } catch {
+    return String(value)
+  }
+}
+
 /** Does this URL look like it could hold an award? */
 export function urlLooksRelevant(url) {
   let pathname
   try {
     const u = new URL(url)
-    pathname = decodeURIComponent(u.pathname + u.search).toLowerCase()
+    pathname = safeDecode(u.pathname + u.search).toLowerCase()
   } catch {
     return false
   }

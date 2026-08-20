@@ -117,8 +117,14 @@ export default function FilterBar({ filters, onChange, counts }: Props) {
           </section>
 
           <section>
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-faint">
+            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-faint">
               {t.filters.where}
+            </p>
+            {/* A country with nothing open is hidden rather than shown empty,
+                which quietly makes a forty-nine-country index look like a
+                fourteen-country one. Saying so costs a line. */}
+            <p className="mb-3 text-[11px] leading-relaxed text-faint">
+              {t.filters.whereNote(DESTINATIONS.length)}
             </p>
             <div className="space-y-3">
               {REGIONS.map((region) => {

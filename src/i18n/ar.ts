@@ -80,6 +80,8 @@ export const ar: Dictionary = {
       'بلا حساب، وبلا تتبّع، وبلا رفع أي ملف. كل ما تحفظه يبقى داخل هذا المتصفّح وحده.',
     builtOn: (date: string, checked: string) => `حُدّث الفهرس في ${date} · فُحصت ${checked} مؤسسة`,
     language: 'اللغة',
+    thanks: 'شكراً لمروركم الكريم، نورتونا.',
+    rights: (year: number) => `© ${year} محمد آدم. جميع الحقوق محفوظة.`,
   },
 
   find: {
@@ -220,6 +222,8 @@ export const ar: Dictionary = {
     nationality: 'جنسيتك',
     nationalityNone: 'غير محدّدة — اعرض كل شيء',
     where: 'وجهة الدراسة',
+    whereNote: (total: number) =>
+      `لا تظهر هنا إلا الدول التي بها منح مفتوحة الآن. الفهرس يشمل ${total} دولة، ويمرّ عليها الزاحف خلال أسبوع تقريبًا.`,
     funding: 'التمويل',
     subject: 'التخصّص',
     deadline: 'الموعد النهائي',

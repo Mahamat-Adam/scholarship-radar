@@ -78,6 +78,10 @@ export const DESTINATIONS: Destination[] = [
 
   { cc: 'AE', name: 'United Arab Emirates', region: 'Middle East' },
   { cc: 'SA', name: 'Saudi Arabia', region: 'Middle East' },
+  { cc: 'QA', name: 'Qatar', region: 'Middle East' },
+  { cc: 'KW', name: 'Kuwait', region: 'Middle East' },
+  { cc: 'BH', name: 'Bahrain', region: 'Middle East' },
+  { cc: 'OM', name: 'Oman', region: 'Middle East' },
 ]
 
 export const REGIONS: Region[] = [

@@ -39,6 +39,8 @@ export const en = {
       'No account, no tracking, nothing uploaded. Everything you save stays in this browser.',
     builtOn: (date: string, checked: string) => `Index built ${date} · ${checked} institutions checked`,
     language: 'Language',
+    thanks: 'Thank you for passing by.',
+    rights: (year: number) => `© ${year} Mahamat Adam. All rights reserved.`,
   },
 
   find: {
@@ -180,6 +182,8 @@ export const en = {
     nationality: 'Your nationality',
     nationalityNone: 'Not set — show everything',
     where: 'Where to study',
+    whereNote: (total: number) =>
+      `Only countries with something open right now are listed. ${total} are indexed in total, and the crawler works through them over about a week.`,
     funding: 'Funding',
     subject: 'Subject',
     deadline: 'Deadline',

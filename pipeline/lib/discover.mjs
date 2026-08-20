@@ -17,7 +17,7 @@
  */
 
 import { get, sitemapsFromRobots, hostOf } from './http.mjs'
-import { urlLooksRelevant, URL_HINTS } from './vocab.mjs'
+import { urlLooksRelevant, URL_HINTS, safeDecode } from './vocab.mjs'
 
 /** Paths worth one speculative request each. Ordered by how often they land. */
 const GUESSES = [
@@ -162,7 +162,7 @@ export function awardLinksFrom(html, base, hostAllowed, limit = 8) {
     if (/\/(list|index)\.(htm|html|jsp|php|psp)$/i.test(href)) continue
 
     const label = m[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
-    const hay = decodeURIComponent(href) + ' ' + label
+    const hay = safeDecode(href) + ' ' + label
     if (!AWARD_LINK.test(hay)) continue
     if (label.length < 4) continue
 
@@ -189,7 +189,7 @@ function linksFrom(html, base, hostAllowed) {
     }
     if (!hostAllowed(href)) continue
     const label = m[2].replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase()
-    const hay = (decodeURIComponent(href) + ' ' + label).toLowerCase()
+    const hay = (safeDecode(href) + ' ' + label).toLowerCase()
     if (URL_HINTS.some((h) => hay.includes(h))) out.push(href)
     if (out.length > 400) break
   }
@@ -316,7 +316,7 @@ export async function discover(inst, { ownerOf = null } = {}) {
   // ones — a deep path is usually one award, a shallow one usually a list.
   const ranked = [...candidates].sort((a, b) => {
     const score = (u) => {
-      const s = decodeURIComponent(u).toLowerCase()
+      const s = safeDecode(u).toLowerCase()
       let n = s.split('/').length
       if (/international/.test(s)) n -= 3
       if (/scholarship|奖学金|burs|stipendium|beca|bourse/.test(s)) n -= 2

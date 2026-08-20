@@ -44,7 +44,7 @@ On a phone, open it in Safari or Chrome and add it to your home screen. It then 
 
 ## How the index is built
 
-A scheduled job crawls a registry of around six thousand universities across forty-five countries, plus a hand-checked list of government programmes.
+A scheduled job crawls a registry of around six thousand universities across forty-nine countries, plus a hand-checked list of government programmes.
 
 **Finding the pages.** Sitemaps first, which is far and away the best route where one exists — it reaches funding pages buried four clicks deep that a link crawl would never see. Where there is no sitemap, a short list of the paths universities actually use, and failing that, links off the homepage and off whichever subdomain the international office lives on. That last one matters more than it sounds: Chinese universities put their international admissions on `iso.`, `isd.`, `sie.`, `istudy.` and a dozen other prefixes, and guessing `en.` finds barely half of them.
 
