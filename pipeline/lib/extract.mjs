@@ -123,9 +123,31 @@ function cleanName(raw) {
   return s
 }
 
+/**
+ * A question is a question, not an award.
+ *
+ * University funding pages put their FAQ in the same accordion as their
+ * scholarships — "How Do You Apply?", "Are there deadlines?", "Are fee waivers
+ * available for CSS Profile?" — and structurally there is nothing to tell them
+ * apart. The question mark is the tell.
+ */
+const IS_QUESTION = /\?\s*$/
+
+/**
+ * Field labels lifted out of a table or a definition list. "Application" is the
+ * left-hand cell of a row whose right-hand cell says "No separate application
+ * required"; the splitter is right that it is a row and wrong that it is an
+ * award. Only rejected when the label is the entire name, so "Presidential
+ * Award" and "Hardship Fund" are untouched.
+ */
+const BARE_LABEL =
+  /^(?:the\s+)?(?:application|applications|amount|value|award|awards|benefit|benefits|eligibility|criteria|requirements?|deadline|duration|overview|description|details|type|category|number|purpose|selection|process|notes?)\s*:?$/i
+
 function plausibleName(name) {
   if (!name) return false
   const n = name.trim()
+  if (IS_QUESTION.test(n)) return false
+  if (BARE_LABEL.test(n)) return false
   if (n.length < 6 || n.length > 160) return false
   if (NAME_NOISE.test(n)) return false
   if (!/[A-Za-zÀ-ÿĀ-￿]/.test(n)) return false

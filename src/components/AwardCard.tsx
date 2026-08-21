@@ -83,6 +83,12 @@ export default function AwardCard({ award: a, onChange }: Props) {
           </span>
         ))}
 
+        {/* Said plainly rather than left blank: an empty space reads as an
+            oversight, and the level genuinely is not on the page. */}
+        {a.levels.length === 0 && (
+          <span className="chip py-1 text-xs text-faint">{t.levels.notStated}</span>
+        )}
+
         {a.application === 'automatic' && (
           <span className="inline-flex items-center gap-1.5 rounded-full border border-leaf/50 bg-leaf/10 px-2.5 py-1 text-xs font-semibold text-leaf">
             <BadgeCheck size={13} /> {t.card.noSeparate}

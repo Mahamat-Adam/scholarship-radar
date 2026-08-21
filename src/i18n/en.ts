@@ -176,6 +176,7 @@ export const en = {
   levels: {
     bachelor: 'Bachelor’s',
     master: 'Master’s',
+    notStated: 'Level not stated',
   },
 
   filters: {

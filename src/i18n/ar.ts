@@ -216,6 +216,7 @@ export const ar: Dictionary = {
   levels: {
     bachelor: 'بكالوريوس',
     master: 'ماجستير',
+    notStated: 'المرحلة غير مذكورة',
   },
 
   filters: {

@@ -94,7 +94,7 @@ function main() {
     if (!/^https:\/\//.test(a.url)) warn('link is not https', `${where} -> ${a.url}`)
 
     // 2. Nothing but bachelor's and master's.
-    if (!Array.isArray(a.levels) || a.levels.length === 0) fail('no level', where)
+    if (!Array.isArray(a.levels)) fail('levels missing entirely', where)
     for (const l of a.levels || []) {
       if (l !== 'bachelor' && l !== 'master') fail('level outside the brief', `${where}: ${l}`)
     }
@@ -118,10 +118,19 @@ function main() {
   }
 
   // 5. The whole point of the open list: nothing in it has closed.
+  //
+  // Judged against the day the index was built, not the day this check runs.
+  // A full crawl takes hours and can cross midnight UTC: the collector saw a
+  // deadline of the 20th on the 20th and correctly called it open, because you
+  // can still apply on the closing day, and then the verifier woke up on the
+  // 21st and called the same records expired. That failed a run whose data was
+  // entirely correct, and it would have failed every run slow enough to span
+  // midnight — which is most of them.
+  const asOf = summary.day || TODAY
   for (const a of open) {
     if (a.status?.state === 'closed') fail('closed listing in the open index', a.id)
-    if (a.deadline && a.deadline < TODAY) {
-      fail('open listing whose deadline has passed', `${a.id} closed ${a.deadline}`)
+    if (a.deadline && a.deadline < asOf) {
+      fail('open listing whose deadline has passed', `${a.id} closed ${a.deadline} (index built ${asOf})`)
     }
   }
 

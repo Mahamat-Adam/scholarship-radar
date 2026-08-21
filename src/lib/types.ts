@@ -55,6 +55,8 @@ export interface Award {
   institution: Institution
   kind: 'university' | 'programme'
   levels: Level[]
+  /** False when the page never said which level it is for. */
+  levelsStated?: boolean
   fields: string[]
   funding: {
     tier: FundingTier

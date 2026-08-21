@@ -96,7 +96,9 @@ function nationalityAllows(a: Award, cc: string): boolean {
 
 /** The first rule an award fails, or null if it passes them all. */
 export function firstFailure(a: Award, f: Filters): ExclusionReason | null {
-  if (f.level && !a.levels.includes(f.level)) return 'level'
+  // An award that never said which level it is for stays in, the same way one
+  // that names no subject does. Silence is not a mismatch.
+  if (f.level && a.levels.length && !a.levels.includes(f.level)) return 'level'
   if (f.nationality && !nationalityAllows(a, f.nationality)) return 'nationality'
   if (f.countries.length && !f.countries.includes(a.institution.cc)) return 'country'
   if (f.fields.length && a.fields.length && !a.fields.some((x) => f.fields.includes(x))) return 'field'

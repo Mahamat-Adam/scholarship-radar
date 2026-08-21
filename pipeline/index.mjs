@@ -160,6 +160,63 @@ function statusOf({ deadline, cycle, intakeYear, application }) {
   return { state: 'open', days: null, why: null }
 }
 
+/**
+ * Headings that belong to a page about money rather than to an award.
+ *
+ * These sit in the same accordion, table or heading structure as the real
+ * scholarships and are structurally indistinguishable from them, which is
+ * exactly why a splitter finds them.
+ */
+const NOT_AN_AWARD_TERMS = [
+  'disbursement', 'recipients?', 'deadlines?', 'how to apply', 'how do i',
+  'faqs?', 'frequently asked', 'calendar', 'policy', 'policies', 'verification',
+  'appeals?', 'appealing', 'withdrawal', 'refunds?', 'cost of attendance',
+  'net price', 'work.?study', 'glossary', 'contact us', 'staff directory',
+  'available forms', 'checklists?', 'timeline', 'newsletter', 'announcements?',
+  'privacy', 'sitemap', 'search results', 'terms and conditions',
+  'important dates', 'application dates', 'consumer information',
+  // Sections of a finance page rather than awards, found by probing.
+  'payment plans?', 'renewable status', 'review process', 'financial aid counseling',
+  'how do you', 'how does', 'what is', 'what are', 'who can', 'when is', 'when are',
+]
+
+/**
+ * Aid an international student cannot have.
+ *
+ * These sit in the same list as the institutional scholarships on almost every
+ * American financial-aid page, and they are gated on the FAFSA and on
+ * citizenship or permanent residency. The pages seldom say so in so many words,
+ * because to the audience they are written for it does not need saying — which
+ * is exactly why a crawler reads them as open and a filter for "not available
+ * to international students" never fires.
+ *
+ * Listing one here would not be untidy, it would be false: the whole site is
+ * for people who are ineligible for every item on this list.
+ */
+const DOMESTIC_ONLY_AID = new RegExp(
+  '(?<![\\p{L}])(?:' +
+    [
+      'pell grant', 'fseog', 'seog', 'supplementary educational opportunity',
+      'supplemental educational opportunity', 'cal grant', 'fafsa',
+      'federal work.?study', 'work.?study award', 'stafford', 'direct (?:subsidised|subsidized|unsubsidised|unsubsidized) loan',
+      'plus loan', 'perkins loan', 'yellow ribbon', 'gi bill', 'post.?9/11',
+      'tuition assistance program', 'state grant program', 'bright futures',
+      'hope scholarship program', 'excelsior scholarship',
+    ].join('|') +
+    ')(?![\\p{L}])',
+  'iu'
+)
+
+/**
+ * Whole words only. Without the boundaries "loan" fires inside "Sloane
+ * Scholarship" and "forms" inside "Uniform", which would quietly delete real
+ * awards in the name of tidying up — a worse failure than the one being fixed.
+ */
+const NOT_AN_AWARD = new RegExp(
+  '(?<![\\p{L}])(?:' + NOT_AN_AWARD_TERMS.join('|') + ')(?![\\p{L}])',
+  'iu'
+)
+
 /* ---------------------------------------------------------------- one award */
 
 function buildRecord({ award, inst, pageUrl, lang, allowedHosts }) {
@@ -167,8 +224,22 @@ function buildRecord({ award, inst, pageUrl, lang, allowedHosts }) {
   const usStyle = US_STYLE_DATES.has(inst.cc)
 
   const levels = readLevels(text)
+
+  // Doctoral-only is outside the brief and goes.
   if (levels.doctoralOnly) return null
-  if (!levels.levels.length) return null
+
+  // An award that names no level stays, marked as not stating one.
+  //
+  // Requiring a stated level was throwing away nine tenths of the hosted
+  // scholarship catalogues, which are the single richest source there is:
+  // a listing row carries a name, an amount and a deadline, and the level sits
+  // on the detail page behind it. Forty-five of fifty awards on one American
+  // university's catalogue were being dropped for saying nothing about a
+  // question most of them do not answer at that level of the page.
+  //
+  // This mirrors how subjects already work — an award that names no subject
+  // stays in the list whatever subject you pick — and it does not invent
+  // anything: the card says the level is not stated rather than claiming both.
 
   const audience = readAudience(text)
   // The brief is international students. An award that says in so many words
@@ -202,6 +273,18 @@ function buildRecord({ award, inst, pageUrl, lang, allowedHosts }) {
     application: application.mode,
   })
 
+  // A page about scholarships is not a scholarship.
+  //
+  // American financial-aid sections are full of headings that a splitter is
+  // right to find and wrong to publish: "2026-2027 Disbursement Dates",
+  // "Appeal Procedure", "Award / Scholarship Recipients", "Are there
+  // deadlines?". They sit in the same accordion as the real awards and read
+  // like them structurally.
+  if (NOT_AN_AWARD.test(award.name)) return null
+
+  // Federal and state aid that no international student can apply for.
+  if (DOMESTIC_ONLY_AID.test(award.name)) return null
+
   const evidence = []
   const push = (label, quoted) => {
     if (quoted && !evidence.some((e) => e.quote === quoted)) evidence.push({ label, quote: quoted })
@@ -217,6 +300,36 @@ function buildRecord({ award, inst, pageUrl, lang, allowedHosts }) {
   push('Countries', eligible?.evidence)
   push('Cycle', cycle.evidence)
 
+  // Something has to be known about it.
+  //
+  // A record with no funding tier, no deadline and not one quotable sentence
+  // is a name and a link — it tells a visitor nothing they could act on, and it
+  // contradicts the one rule this project runs on, that nothing appears on a
+  // card unless a sentence on the page says it. Seven in ten of the awards a
+  // first American pass produced were exactly that.
+  //
+  // Dropping them costs volume and buys back the only thing that makes the
+  // index worth reading.
+  // A date on its own is not enough.
+  //
+  // "Medical Field" is a category heading on a page that groups scholarships by
+  // subject. It cleared the first version of this gate because a deadline was
+  // found somewhere in its block, and its entire evidence was the string
+  // "Oct. 31, 2026" — a date, attached to a heading, describing nothing. So a
+  // record with no stated funding and nothing quotable beyond its deadline now
+  // has to at least call itself an award to get through.
+  const beyondADate = evidence.some((e) => e.label !== 'Deadline')
+  const namesAnAward =
+    /scholarship|bursary|award|grant|fund|prize|fellowship|stipend|endowed|memorial|scholar/i.test(
+      award.name
+    )
+
+  const saysSomething =
+    funding.tier !== 'not-stated' ||
+    beyondADate ||
+    (Boolean(deadlineHit?.date) && namesAnAward)
+  if (!saysSomething) return null
+
   return {
     id: `${inst.id}--${slug(award.name)}`,
     name: award.name,
@@ -225,6 +338,7 @@ function buildRecord({ award, inst, pageUrl, lang, allowedHosts }) {
     institution: { id: inst.id, name: inst.name, cc: inst.cc, domain: inst.domain },
     kind: 'university',
     levels: levels.levels,
+    levelsStated: levels.levels.length > 0,
     fields,
     funding: {
       tier: funding.tier,
