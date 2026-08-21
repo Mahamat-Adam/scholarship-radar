@@ -46,14 +46,23 @@ export default function Results({ outcome, filters, onChange, onCardChange, empt
     markSeen(shownIds)
   }, [shownIds])
 
+  // What we can actually stand behind: a future date we re-check, or an award
+  // that is considered automatically and so has no window to miss.
+  const dated = results.filter((a) => a.deadline || a.application === 'automatic').length
+
   const hidden = (Object.entries(excluded) as Array<[ExclusionReason, number]>)
     .filter(([, n]) => n > 0)
     .sort((a, b) => b[1] - a[1])
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
+      <div className="flex flex-col gap-1">
         <p className="text-sm text-muted">{t.results.count(results.length)}</p>
+        {results.length > 0 && (
+          <p className="text-xs leading-relaxed text-faint">
+            {t.results.confirmed(dated, results.length - dated)}
+          </p>
+        )}
       </div>
 
       {hidden.length > 0 && (

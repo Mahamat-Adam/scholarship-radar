@@ -126,7 +126,11 @@ export const ar: Dictionary = {
   },
 
   results: {
-    count: (n: number) => `${awards(n)} يمكنك التقديم عليها الآن`,
+    count: (n: number) => awards(n),
+    confirmed: (dated: number, undated: number) =>
+      undated === 0
+        ? 'جميعها تذكر موعدا نهائيا، ويراجع كل يوم.'
+        : `${dated} منها تذكر موعدا نهائيا نراجعه كل يوم، والباقي ${undated} لا تنشر موعدا أصلا. بطاقاتها تقول ذلك، ولا ندعي أنها ما زالت مفتوحة.`,
     hiddenTitle: 'ما لم يُعرض، وسببه:',
     emptyTitle: 'لا شيء يطابق كل هذه الشروط.',
     emptyBody:

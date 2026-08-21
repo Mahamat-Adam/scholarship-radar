@@ -85,8 +85,15 @@ export const en = {
   },
 
   results: {
-    count: (n: number) =>
-      `${n} ${n === 1 ? 'scholarship' : 'scholarships'} you can apply for now`,
+    count: (n: number) => `${n} ${n === 1 ? 'scholarship' : 'scholarships'}`,
+    // Said plainly, because the count above it cannot be honest on its own: a
+    // listing whose page never published a closing date is not one we have
+    // confirmed is open, and lumping it in with the ones we re-check every day
+    // would be exactly the overclaim this site exists to avoid.
+    confirmed: (dated: number, undated: number) =>
+      undated === 0
+        ? `All of them state a closing date, re-checked daily.`
+        : `${dated} state a closing date, which is re-checked every day. The other ${undated} do not publish one — their cards say so, and we do not claim they are still open.`,
     hiddenTitle: 'Not shown, and why:',
     emptyTitle: 'Nothing matches all of that.',
     emptyBody:
